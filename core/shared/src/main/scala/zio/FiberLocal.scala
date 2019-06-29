@@ -21,6 +21,8 @@ import zio.FiberLocal.internal._
 /**
  * A container for fiber-local storage. It is the pure equivalent to Java's `ThreadLocal`
  * on a fiber architecture.
+ *
+ * Therefore, this class has been deprecated and `zio.FiberRef` has been use instead.
  */
 @deprecated("use zio.FiberRef", since = "1.0.0")
 final class FiberLocal[A] private (private val state: Ref[State[A]]) extends Serializable {
@@ -61,6 +63,7 @@ final class FiberLocal[A] private (private val state: Ref[State[A]]) extends Ser
     set(value).bracket_[Any, Nothing].apply[Any](empty)(use) //    TODO: Dotty doesn't infer this properly
 }
 
+@deprecated("use zio.FiberRef", since = "1.0.0")
 object FiberLocal {
 
   /**
