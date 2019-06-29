@@ -16,12 +16,13 @@
 
 package zio
 
-import FiberLocal.internal._
+import zio.FiberLocal.internal._
 
 /**
  * A container for fiber-local storage. It is the pure equivalent to Java's `ThreadLocal`
  * on a fiber architecture.
  */
+@deprecated("use zio.FiberRef", since = "1.0.0")
 final class FiberLocal[A] private (private val state: Ref[State[A]]) extends Serializable {
 
   /**
